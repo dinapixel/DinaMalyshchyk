@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<form name="dane">
+  <label for="dlugosc">Długość pokoju (m): </label>
+  <input type="text" id="dlugosc" name="dlugosc"><br><br>
+  <label for="szerokosc">Szerokość pokoju (m): </label>
+  <input type="text" id="szerokosc" name="szerokosc"><br><br>
+  <button type="button" onclick="oblicz()">Oblicz</button>
+</form>
+
+<p id="powierzchnia"></p>
+<p id="koszt"></p>
+
+<script>
+function oblicz() {
+  
+  var dlugosc = parseFloat(document.forms['dane']['dlugosc'].value);
+  var szerokosc = parseFloat(document.forms['dane']['szerokosc'].value);
+  
+ 
+  if (isNaN(dlugosc)||isNaN(szerokosc)|| dlugosc <= 0 || szerokosc <= 0) {
+    alert("Podaj poprawne wymiary pokoju.");
+    return;
+  }
+
+  var wysokosc = 2.7;
+  var cenaZaM2 = 8;
+
+ 
+  var powierzchnia = 2 * dlugosc * wysokosc + 2 * szerokosc * wysokosc;
+
+
+  var koszt = powierzchnia * cenaZaM2;
+
+  document.getElementById("powierzchnia").textContent = "Powierzchnia całkowita ścian: " + powierzchnia + " kw.m.";
+  document.getElementById("koszt").textContent = "Koszt malowania: " + koszt + " zł";
+}
+</script>
+</body>
+</html>
